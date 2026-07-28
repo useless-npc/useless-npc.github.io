@@ -1,13 +1,22 @@
 ---
 layout: default
 ---
-<section class="archive-hero wrap home-intro">
-  <p class="eyebrow">NPC / SECURITY RESEARCH</p>
-  <h1>Writeups &amp; <em>field notes.</em></h1>
-  <p class="lede">CTF walkthroughs, certification notes, vulnerability research, and hands-on labs.</p>
-</section>
-<section class="writeups-section wrap" id="writeups">
-  <div class="section-heading"><div><p class="eyebrow">KNOWLEDGE BASE</p><h2>All writeups</h2></div><a href="{{ '/writeups/' | relative_url }}">Browse archive <span>→</span></a></div>
-  <div class="writeup-grid">{% for post in site.posts %}{% include writeup-card.html post=post %}{% endfor %}</div>
-  {% if site.posts.size == 0 %}<p class="empty-state">No writeups published yet.</p>{% endif %}
+<section class="home-feed wrap" id="writeups">
+  <header class="home-feed-header">
+    <div>
+      <p class="eyebrow">NPC / SECURITY RESEARCH</p>
+      <h1>Latest <em>writeups.</em></h1>
+    </div>
+    <p>CTF walkthroughs, certification notes, vulnerability research, and hands-on labs.</p>
+  </header>
+
+  {% if site.posts.size > 0 %}
+  <div class="home-card-grid">
+    {% for post in site.posts %}
+      {% include home-card.html post=post index=forloop.index %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">No writeups published yet.</p>
+  {% endif %}
 </section>
