@@ -1,6 +1,6 @@
 title: "NPC | Security Research"
 description: "Cybersecurity notes, CTF writeups, vulnerability research, and lab walkthroughs."
-url: ""
+url: "https://useless-npc.github.io"
 baseurl: ""
 
 markdown: kramdown
@@ -9,6 +9,7 @@ permalink: /:categories/:year/:month/:day/:title/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 collections: {}
 exclude:
