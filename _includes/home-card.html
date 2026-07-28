@@ -14,7 +14,6 @@
     <div class="card-details">
       <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: '%b %d, %Y' }}</time>
       <span>{{ include.post.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
-      <span class="difficulty-badge">{{ include.post.tags | last | default: 'notes' }}</span>
     </div>
     <a class="read-more" href="{{ include.post.url | relative_url }}">Read more <span aria-hidden="true">&rarr;</span></a>
   </div>
