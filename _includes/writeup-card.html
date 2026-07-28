@@ -1,0 +1,6 @@
+<article class="writeup-card reveal" data-categories="{% for category in include.post.categories %}{{ category | slugify }} {% endfor %}">
+  <div class="card-meta"><span>{{ include.post.categories | first | default: 'research' | upcase }}</span><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: '%d %b %Y' }}</time></div>
+  <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+  <p>{{ include.post.excerpt | strip_html | normalize_whitespace | truncate: 145 }}</p>
+  <div class="card-footer"><span class="difficulty">{{ include.post.tags | first | default: 'notes' }}</span><a class="card-link" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title }}">Read more <span>→</span></a></div>
+</article>

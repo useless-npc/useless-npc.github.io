@@ -1,31 +1,16 @@
-title: Your Name — Security Writeups
-description: >-
-  Cybersecurity certification notes, CTF walkthroughs, and challenge writeups.
-theme: minima
+title: "Your Name | Security Research"
+description: "Cybersecurity notes, CTF writeups, vulnerability research, and lab walkthroughs."
+url: ""
+baseurl: ""
 
-# Shows recent posts on the home page automatically via minima's default layout
-show_excerpts: true
-
-# Nav bar links (minima reads this to build the top menu)
-header_pages:
-  - about.md
-
-# Social links (optional — fill in or delete lines you don't want)
-minima:
-  social_links:
-    - platform: github
-      user_url: "https://github.com/YOUR-GITHUB-USERNAME"
-
-# Markdown / plugins
 markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Permalink style — /category/2026/07/29/title/
-permalink: /:categories/:year/:month/:day/:title/
-
-# Don't publish these
+collections: {}
 exclude:
   - README.md
   - Gemfile
