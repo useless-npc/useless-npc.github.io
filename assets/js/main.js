@@ -5,14 +5,28 @@
     const open = nav.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open);
   });
-  document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
-    const filter = button.dataset.filter; let visible = 0;
-    document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
-    document.querySelectorAll('.writeup-card').forEach(card => {
-      const show = filter === 'all' || card.dataset.categories.includes(filter); card.hidden = !show; if (show) visible++;
+  const archiveCards = document.querySelectorAll('.writeup-card, .archive-card');
+  const search = document.querySelector('#writeup-search');
+  let activeFilter = 'all';
+  const filterCards = () => {
+    let visible = 0;
+    const query = search ? search.value.trim().toLowerCase() : '';
+    archiveCards.forEach(card => {
+      const categoryMatch = activeFilter === 'all' || card.dataset.categories.includes(activeFilter);
+      const searchMatch = !query || card.dataset.search.includes(query);
+      const show = categoryMatch && searchMatch;
+      card.hidden = !show;
+      if (show) visible++;
     });
-    const empty = document.querySelector('.empty-state'); if (empty) empty.hidden = visible > 0;
+    const empty = document.querySelector('.empty-state');
+    if (empty) empty.hidden = visible > 0;
+  };
+  document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+    filterCards();
   }));
+  if (search) search.addEventListener('input', filterCards);
   const content = document.querySelector('.post-content'); const toc = document.querySelector('.toc');
   if (content && toc) {
     const headings = content.querySelectorAll('h2, h3');

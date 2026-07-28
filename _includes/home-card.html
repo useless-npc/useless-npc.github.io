@@ -1,4 +1,4 @@
-<article class="home-card">
+<article class="home-card {{ include.card_class }}" data-categories="{% for category in include.post.categories %}{{ category | slugify }} {% endfor %}" data-search="{{ include.post.title | append: ' ' | append: include.post.categories | append: ' ' | append: include.post.tags | downcase }}">
   <a class="home-card-art art-{{ include.index | modulo: 4 }}" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title }}">
     {% if include.post.image %}
       <img src="{{ include.post.image | relative_url }}" alt="" loading="lazy">

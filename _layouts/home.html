@@ -12,7 +12,7 @@ layout: default
 
   {% if site.posts.size > 0 %}
   <div class="home-card-grid">
-    {% for post in site.posts %}
+    {% for post in site.posts limit:3 %}
       {% include home-card.html post=post index=forloop.index %}
     {% endfor %}
   </div>
