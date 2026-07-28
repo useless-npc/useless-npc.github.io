@@ -1,21 +1,13 @@
 ---
 layout: default
 ---
-<section class="hero wrap">
-  <div class="hero-copy">
-    <p class="eyebrow"><span class="pulse"></span> SECURITY RESEARCHER / STUDENT</p>
-    <h1>Breaking things,<br><em>understanding</em> everything.</h1>
-    <p class="lede">A personal log of CTF writeups, vulnerability research, certification notes, and hands-on labs.</p>
-    <div class="hero-actions"><a class="button primary" href="#writeups">Explore writeups <span>↓</span></a><a class="button text-button" href="{{ '/about/' | relative_url }}">More about me <span>→</span></a></div>
-  </div>
-  <aside class="terminal-card" aria-label="Terminal status">
-    <div class="terminal-bar"><span></span><span></span><span></span><p>research@portfolio:~</p></div>
-    <div class="terminal-content"><p><span class="term-prompt">$</span> whoami</p><p class="term-output">security enthusiast</p><p><span class="term-prompt">$</span> status</p><p class="term-output green">learning. researching. sharing.</p><p><span class="term-prompt">$</span> <span class="cursor"></span></p></div>
-  </aside>
+<section class="archive-hero wrap home-intro">
+  <p class="eyebrow">NPC / SECURITY RESEARCH</p>
+  <h1>Writeups &amp; <em>field notes.</em></h1>
+  <p class="lede">CTF walkthroughs, certification notes, vulnerability research, and hands-on labs.</p>
 </section>
-<section class="stats wrap" aria-label="Portfolio highlights"><div><span class="stat-num">{{ site.posts.size | prepend: '0' | slice: -2, 2 }}</span><span>Published notes</span></div><div><span class="stat-num">24/7</span><span>Curiosity mode</span></div><div><span class="stat-num">∞</span><span>Attack paths explored</span></div></section>
-{% assign latest = site.posts.first %}
-{% if latest %}
-<section class="featured wrap"><div class="section-heading"><div><p class="eyebrow">LATEST INTEL</p><h2>Featured writeup</h2></div><a href="{{ '/writeups/' | relative_url }}">View all <span>→</span></a></div><article class="featured-card"><div class="card-meta"><span>{{ latest.categories | first | default: 'research' | upcase }}</span><time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: '%d %b %Y' }}</time></div><h3><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h3><p>{{ latest.excerpt | strip_html | normalize_whitespace | truncate: 190 }}</p><a class="card-link" href="{{ latest.url | relative_url }}">Read writeup <span>→</span></a></article></section>
-{% endif %}
-<section class="writeups-section wrap" id="writeups"><div class="section-heading"><div><p class="eyebrow">KNOWLEDGE BASE</p><h2>Recent writeups</h2></div></div><div class="writeup-grid">{% for post in site.posts limit:6 %}{% include writeup-card.html post=post %}{% endfor %}</div></section>
+<section class="writeups-section wrap" id="writeups">
+  <div class="section-heading"><div><p class="eyebrow">KNOWLEDGE BASE</p><h2>All writeups</h2></div><a href="{{ '/writeups/' | relative_url }}">Browse archive <span>→</span></a></div>
+  <div class="writeup-grid">{% for post in site.posts %}{% include writeup-card.html post=post %}{% endfor %}</div>
+  {% if site.posts.size == 0 %}<p class="empty-state">No writeups published yet.</p>{% endif %}
+</section>

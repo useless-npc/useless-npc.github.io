@@ -15,19 +15,18 @@
     <div class="site-shell">
       <header class="site-header">
         <nav class="nav wrap" aria-label="Primary navigation">
-          <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home"><span class="brand-mark">&gt;_</span><span>YOURNAME</span></a>
+          <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home"><span class="brand-mark">&gt;_</span><span>NPC</span></a>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
           <div class="nav-links" id="nav-links">
             <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
             <a href="{{ '/writeups/' | relative_url }}" {% if page.url == '/writeups/' %}aria-current="page"{% endif %}>Writeups</a>
             <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About Me</a>
-            <a class="nav-contact" href="mailto:hello@example.com">Contact <span>↗</span></a>
           </div>
         </nav>
       </header>
       <main id="main-content">{{ content }}</main>
       <footer class="site-footer">
-        <div class="wrap footer-inner"><p>© {{ 'now' | date: '%Y' }} Your Name. All systems operational.</p><div><a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener">GitHub</a><a href="{{ site.github.repository_url | default: 'https://pages.github.com/' }}" target="_blank" rel="noopener">Built with GitHub Pages</a></div></div>
+        <div class="wrap footer-inner"><p>© {{ 'now' | date: '%Y' }} NPC. All systems operational.</p><div><a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener">GitHub</a><a href="{{ site.github.repository_url | default: 'https://pages.github.com/' }}" target="_blank" rel="noopener">Built with GitHub Pages</a></div></div>
       </footer>
     </div>
     <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
