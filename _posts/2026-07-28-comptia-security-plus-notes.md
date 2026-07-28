@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CompTIA Security+ — Domain 1 Notes: General Security Concepts"
-date: 2026-07-29 09:00:00 +0800
-categories: [certifications, security-plus]
+date: 2026-07-28 09:00:00 +0800
+categories: [htb]
 tags: [study-notes, comptia]
 ---
 
