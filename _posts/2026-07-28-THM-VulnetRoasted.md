@@ -8,7 +8,7 @@ tags: [tryhackme, 'VulnNet: Roasted', Easy]
 ---
 
 ### LAB info
-**Link : [Google](https://tryhackme.com/room/vulnnetroasted)**
+**Link : [VulnNet: Roasted](https://tryhackme.com/room/vulnnetroasted)**
 
 **Description : VulnNet Entertainment quickly deployed another management instance on their very broad network...**
 

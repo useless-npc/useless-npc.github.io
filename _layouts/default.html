@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#080d14">
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,6 +21,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/archive.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     <link rel="stylesheet" href="{{ '/assets/css/code.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     <link rel="stylesheet" href="{{ '/assets/css/lightbox.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     {% seo %}
   </head>
   <body>
@@ -26,6 +35,9 @@
             <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
             <a href="{{ '/writeups/' | relative_url }}" {% if page.url == '/writeups/' %}aria-current="page"{% endif %}>Writeups</a>
             <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About Me</a>
+            <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+              <span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light</span>
+            </button>
           </div>
         </nav>
       </header>

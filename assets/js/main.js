@@ -1,4 +1,24 @@
 (() => {
+  const themeToggle = document.querySelector('.theme-toggle');
+  const setTheme = theme => {
+    const isLight = theme === 'light';
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isLight ? '#f5f8fc' : '#080d14');
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', String(isLight));
+      themeToggle.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+      themeToggle.querySelector('.theme-toggle-icon').textContent = isLight ? '☾' : '☀';
+      themeToggle.querySelector('.theme-toggle-label').textContent = isLight ? 'Dark' : 'Light';
+    }
+  };
+  setTheme(document.documentElement.dataset.theme || 'dark');
+  themeToggle?.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', nextTheme);
+    setTheme(nextTheme);
+  });
+
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-links');
   if (toggle && nav) toggle.addEventListener('click', () => {

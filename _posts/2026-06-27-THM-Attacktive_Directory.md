@@ -8,7 +8,7 @@ tags: [tryhackme, Attacktive_Directory , Medium , AttacktiveDirectory]
 ---
 
 ### LAB info
-**Link : [Google](https://tryhackme.com/room/attacktivedirectory)**
+**Link : [Attacktive Directory](https://tryhackme.com/room/attacktivedirectory)**
 
 **Description : 99% of Corporate networks run off of AD. But can you exploit a vulnerable Domain Controller?**
 
