@@ -3,8 +3,8 @@ layout: post
 title: "VulnNet: Roasted"
 date: 2026-07-28 09:00:00 +0800
 image: /assets/images/THM/VulnNetRoasted/VulnetRoasted.png
-categories: [thm]
-tags: [tryhackme, 'VulnNet: Roasted', Easy]
+categories: [thm , ActiveDirectory]
+tags: [tryhackme, 'VulnNet: Roasted', Easy , ActiveDirectory , AD]
 ---
 
 ### LAB info

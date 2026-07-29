@@ -3,8 +3,8 @@ layout: post
 title: "Attacktive Directory"
 date: 2026-06-27 09:00:00 +0800
 image: assets/images/THM/Attacktive_Directory/Attacktive_Directory.png
-categories: [thm]
-tags: [tryhackme, Attacktive_Directory , Medium , AttacktiveDirectory]
+categories: [thm , ActiveDirectory]
+tags: [tryhackme, Attacktive_Directory , Medium , AttacktiveDirectory , ActiveDirectory , AD]
 ---
 
 ### LAB info
@@ -197,7 +197,7 @@ backup@spookysec.local:backup2517860
 ```
 
 
-### enumeration with user backup
+### enumeration with user backup amd get other user txt
 
 then we can rdp  and get the other user.txt
 
