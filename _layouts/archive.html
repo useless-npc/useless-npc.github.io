@@ -2,6 +2,13 @@
 layout: default
 ---
 <section class="wrap archive-content">
+  {% assign tags = site.tags | sort %}
+  {% if tags.size > 0 %}
+  <section class="tag-panel" aria-label="Writeup tags">
+    <p class="tag-panel-title">Tags</p>
+    <div class="tag-list">{% for tag in tags %}<button class="tag-filter" type="button" data-tag="{{ tag[0] | downcase }}">{{ tag[0] }}</button>{% endfor %}</div>
+  </section>
+  {% endif %}
   <div class="archive-tools">
     <label class="writeup-search"><span class="sr-only">Search writeups</span><span aria-hidden="true">&#9906;</span><input type="search" id="writeup-search" placeholder="Search writeups" autocomplete="off"></label>
   </div>

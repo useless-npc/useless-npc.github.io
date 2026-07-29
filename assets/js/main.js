@@ -27,6 +27,12 @@
     filterCards();
   }));
   if (search) search.addEventListener('input', filterCards);
+  document.querySelectorAll('.tag-filter').forEach(button => button.addEventListener('click', () => {
+    if (!search) return;
+    search.value = button.dataset.tag;
+    document.querySelectorAll('.tag-filter').forEach(item => item.classList.toggle('active', item === button));
+    filterCards();
+  }));
   const content = document.querySelector('.post-content'); const toc = document.querySelector('.toc');
   if (content && toc) {
     const headings = content.querySelectorAll('h2, h3');
