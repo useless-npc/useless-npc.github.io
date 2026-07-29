@@ -39,7 +39,10 @@
   document.querySelectorAll('.post-content pre').forEach(pre => {
     const code = pre.querySelector('code');
     if (!code) return;
-    pre.classList.add('code-block');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block';
+    pre.before(wrapper);
+    wrapper.append(pre);
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'copy-code';
@@ -64,6 +67,6 @@
       button.classList.add('is-copied');
       setTimeout(() => { button.textContent = 'Copy'; button.classList.remove('is-copied'); }, 1600);
     });
-    pre.append(button);
+    wrapper.append(button);
   });
 })();
