@@ -2,16 +2,16 @@
 layout: default
 ---
 <section class="wrap archive-content">
-  {% assign tags = site.tags | sort %}
-  {% if tags.size > 0 %}
-  <section class="tag-panel" aria-label="Writeup tags">
-    <p class="tag-panel-title">Tags</p>
-    <div class="tag-list">{% for tag in tags %}<button class="tag-filter" type="button" data-tag="{{ tag[0] | downcase }}">{{ tag[0] }}</button>{% endfor %}</div>
-  </section>
-  {% endif %}
   <div class="archive-tools">
     <label class="writeup-search"><span class="sr-only">Search writeups</span><span aria-hidden="true">&#9906;</span><input type="search" id="writeup-search" placeholder="Search writeups" autocomplete="off"></label>
   </div>
+  {% assign categories = site.categories | sort %}
+  {% if categories.size > 0 %}
+  <section class="tag-panel" aria-label="Writeup categories">
+    <p class="tag-panel-title">Categories</p>
+    <div class="tag-list"><button class="category-filter active" type="button" data-category="all">All</button>{% for category in categories %}<button class="category-filter" type="button" data-category="{{ category[0] | slugify }}">{{ category[0] | replace: '-', ' ' }}</button>{% endfor %}</div>
+  </section>
+  {% endif %}
   <div class="home-card-grid archive-card-grid">{% for post in site.posts %}{% include home-card.html post=post index=forloop.index card_class='archive-card' %}{% endfor %}</div>
   <p class="empty-state" hidden>No writeups match your search.</p>
 </section>
