@@ -95,7 +95,7 @@ AllowedtoAct is acutally known as resource-based constrained delegation . Every 
 
 
 The exploit overview 
-### How the Exploit Walks Through the Building
+###### How the Exploit Walks Through the Building
 
 Because of the **AllowedToAct** setting you injected, the "building rules" get twisted:
 
