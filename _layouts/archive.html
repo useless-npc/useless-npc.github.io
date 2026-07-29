@@ -1,10 +1,8 @@
 ---
 layout: default
 ---
-<section class="archive-hero wrap"><p class="eyebrow">KNOWLEDGE BASE / {{ site.posts.size | prepend: '0' | slice: -2, 2 }} ENTRIES</p><h1>Writeups &amp; <em>field notes.</em></h1><p class="lede">Practical notes from security labs, capture-the-flag challenges, and continuing study.</p></section>
 <section class="wrap archive-content">
   <div class="archive-tools">
-    <div class="filter-row" aria-label="Writeup categories"><button class="filter active" data-filter="all">All</button>{% assign categories = site.categories | sort %}{% for category in categories %}<button class="filter" data-filter="{{ category[0] | slugify }}">{{ category[0] | replace: '-', ' ' }}</button>{% endfor %}</div>
     <label class="writeup-search"><span class="sr-only">Search writeups</span><span aria-hidden="true">&#9906;</span><input type="search" id="writeup-search" placeholder="Search writeups" autocomplete="off"></label>
   </div>
   <div class="home-card-grid archive-card-grid">{% for post in site.posts %}{% include home-card.html post=post index=forloop.index card_class='archive-card' %}{% endfor %}</div>

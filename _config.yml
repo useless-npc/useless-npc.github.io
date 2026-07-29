@@ -16,3 +16,5 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+
+code_copy: true
