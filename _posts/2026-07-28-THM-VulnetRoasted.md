@@ -8,9 +8,11 @@ tags: [tryhackme, 'VulnNet: Roasted', Easy]
 ---
 
 ### LAB info
-link : https://tryhackme.com/room/vulnnetroasted
+**Link : [Google](https://tryhackme.com/room/vulnnetroasted)**
 
-Difficulty : Easy
+**Description : VulnNet Entertainment quickly deployed another management instance on their very broad network...**
+
+**Difficulty : Easy**
 
 ### Nmap discover open port
 
