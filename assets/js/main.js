@@ -69,4 +69,35 @@
     });
     wrapper.append(button);
   });
+
+  document.querySelectorAll('.post-content img').forEach(image => {
+    const frame = document.createElement('span');
+    frame.className = 'image-frame';
+    frame.setAttribute('role', 'button');
+    frame.setAttribute('tabindex', '0');
+    frame.setAttribute('aria-label', `Enlarge image${image.alt ? `: ${image.alt}` : ''}`);
+    image.before(frame);
+    frame.append(image);
+    const openImage = () => {
+      const lightbox = document.createElement('div');
+      lightbox.className = 'image-lightbox';
+      lightbox.setAttribute('role', 'dialog');
+      lightbox.setAttribute('aria-modal', 'true');
+      lightbox.setAttribute('aria-label', 'Enlarged image preview');
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'lightbox-close';
+      close.textContent = 'Close';
+      const largeImage = image.cloneNode();
+      lightbox.append(close, largeImage);
+      document.body.append(lightbox);
+      close.focus();
+      const closeLightbox = () => { lightbox.remove(); frame.focus(); };
+      close.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+      lightbox.addEventListener('keydown', event => { if (event.key === 'Escape') closeLightbox(); });
+    };
+    frame.addEventListener('click', openImage);
+    frame.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImage(); } });
+  });
 })();

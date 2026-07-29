@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="reading-progress" aria-hidden="true"><span></span></div>
 <article class="post wrap">
-  <header class="post-header"><a class="back-link" href="{{ '/writeups/' | relative_url }}">← Back to writeups</a><p class="eyebrow">{{ page.categories | first | default: 'RESEARCH' | upcase }} / {{ page.date | date: '%d %b %Y' }}</p><h1>{{ page.title }}</h1><div class="post-tags">{% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}</div></header>
+  <header class="post-header"><a class="back-link" href="{{ '/writeups/' | relative_url }}">← Back to writeups</a><p class="eyebrow">{{ page.categories | first | default: 'RESEARCH' | upcase }} / {{ page.date | date: '%d %b %Y' }}</p><h1>{{ page.title }}</h1></header>
   <div class="post-layout"><aside class="post-sidebar"><p>ON THIS PAGE</p><nav class="toc" aria-label="Table of contents"></nav></aside><div class="post-content">{{ content }}</div></div>
   <nav class="post-pagination" aria-label="Post navigation">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>← Previous</span><strong>{{ page.previous.title }}</strong></a>{% else %}<span></span>{% endif %}{% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><span>Next →</span><strong>{{ page.next.title }}</strong></a>{% endif %}</nav>
 </article>
